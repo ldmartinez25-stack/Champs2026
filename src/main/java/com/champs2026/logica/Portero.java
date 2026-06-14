@@ -4,8 +4,8 @@ package com.champs2026.logica;
 public class Portero extends com.champs2026.logica.Deportista {
     private int atajada; // Atributo exclusivo
 
-    public Portero(String nombre, int velocidad, int disparo, int pase, int defensa, double precio, int atajada) {
-        super(nombre, velocidad, disparo, pase, defensa, precio);
+    public Portero(String nombre, String pais, int velocidad, int disparo, int pase, int defensa, double precio, int atajada) {
+        super(nombre, pais, velocidad, disparo, pase, defensa, precio);
         this.atajada = atajada;
     }
 

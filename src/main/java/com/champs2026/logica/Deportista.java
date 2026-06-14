@@ -5,14 +5,16 @@
      */
     public abstract class Deportista {
         private String nombre;
+        private String pais;
         private int velocidad;
         private int disparo;
         private int pase;
         private int defensa;
         private double precio;
 
-        public Deportista(String nombre, int velocidad, int disparo, int pase, int defensa, double precio) {
+        public Deportista(String nombre, String pais, int velocidad, int disparo, int pase, int defensa, double precio) {
             this.nombre = nombre;
+            this.pais = pais;
             this.velocidad = velocidad;
             this.disparo = disparo;
             this.pase = pase;
@@ -24,6 +26,7 @@
 
         // Getters y Setters
         public String getNombre() { return nombre; }
+        public String getPais() { return pais; }
         public int getVelocidad() { return velocidad; }
         public int getDisparo() { return disparo; }
         public int getPase() { return pase; }

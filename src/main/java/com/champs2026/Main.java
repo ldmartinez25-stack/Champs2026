@@ -1,22 +1,36 @@
 package com.champs2026;
 
-import com.champs2026.logica.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import com.champs2026.gui.VistaPrincipal;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
+        // Iniciar la interfaz visual (Frontend) en el hilo de despacho de eventos de Swing
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                VistaPrincipal vista = new VistaPrincipal();
+                vista.setVisible(true);
+            }
+        });
+        
+        /* 
+        ========================================================================
+        CÓDIGO DE CONSOLA ORIGINAL (DESACTIVADO PARA MODO GRÁFICO)
+        ========================================================================
+        
         // PASO 1: Carga dinámica desde el archivo .txt
-        ArrayList<Deportista> bancoComun = LectorDatos.cargarMercadoDesdeArchivo("/home/daniel/NetBeansProjects/Champs2026/futbolistas.txt");
-        MercadoFichajes mercado = new MercadoFichajes(bancoComun);
+        java.util.ArrayList<com.champs2026.logica.Deportista> bancoComun = 
+            com.champs2026.logica.LectorDatos.cargarMercadoDesdeArchivo("/home/daniel/NetBeansProjects/Champs2026/futbolistas.txt");
+        com.champs2026.logica.MercadoFichajes mercado = new com.champs2026.logica.MercadoFichajes(bancoComun);
 
         // PASO 2: Registro interactivo de Directores Técnicos
-        Jugador[] entrenadores = ConfiguracionInicial.registrarJugadores();
-        Jugador j1 = entrenadores[0];
-        Jugador j2 = entrenadores[1];
+        com.champs2026.logica.Jugador[] entrenadores = com.champs2026.logica.ConfiguracionInicial.registrarJugadores();
+        com.champs2026.logica.Jugador j1 = entrenadores[0];
+        com.champs2026.logica.Jugador j2 = entrenadores[1];
 
         // FASE DE PRUEBA DE COMPRAS EN CONSOLA
-        Scanner scanner = new Scanner(System.in);
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
         
         // Muestra los jugadores disponibles
         mercado.mostrarMercadoDisponible();
@@ -42,5 +56,6 @@ public class Main {
         j2.getSeleccionElegida().mostrarPlantilla();
         System.out.println("Presupuesto de " + j2.getNombre() + ": " + j2.getPresupuesto() + " monedas.");
         System.out.println("=========================================");
+        */
     }
 }
