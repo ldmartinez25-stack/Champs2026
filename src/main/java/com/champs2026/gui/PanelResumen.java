@@ -128,7 +128,7 @@ public class PanelResumen extends JPanel {
         lblNombre.setFont(VistaPrincipal.FUENTE_SUBTITULO);
         lblNombre.setForeground(colorAcento);
 
-        JLabel lblPais = new JLabel("Selección: " + jugador.getSeleccionElegida().getNombrePais());
+        JLabel lblPais = new JLabel("Selección: " + jugador.getSeleccionNacional().getNombrePais());
         lblPais.setFont(VistaPrincipal.FUENTE_NORMAL);
         lblPais.setForeground(VistaPrincipal.COLOR_TEXTO);
 
@@ -141,7 +141,7 @@ public class PanelResumen extends JPanel {
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
         listPanel.setBackground(VistaPrincipal.COLOR_TARJETA);
 
-        ArrayList<Deportista> plantilla = jugador.getSeleccionElegida().getPlantilla();
+        ArrayList<Deportista> plantilla = jugador.getSeleccionNacional().getPlantilla();
         if (plantilla.isEmpty()) {
             JLabel lblVacio = new JLabel("No se fichó a ningún futbolista.");
             lblVacio.setFont(VistaPrincipal.FUENTE_NORMAL);

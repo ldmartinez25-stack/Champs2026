@@ -59,7 +59,7 @@ public class MercadoFichajes {
         comprador.setPresupuesto(nuevoPresupuesto);
 
         // 4. Agregar el futbolista a la plantilla de la SeleccionNacional de ese jugador
-        comprador.getSeleccionElegida().agregarFutbolista(futbolistaEncontrado);
+        comprador.getSeleccionNacional().agregarFutbolista(futbolistaEncontrado);
 
         // 5. Eliminar al futbolista del bancoComun (garantiza el principio de mercado exclusivo)
         this.bancoComun.remove(futbolistaEncontrado);

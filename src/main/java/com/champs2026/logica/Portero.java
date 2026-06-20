@@ -1,7 +1,7 @@
 // Portero.java
 package com.champs2026.logica;
 
-public class Portero extends com.champs2026.logica.Deportista {
+public class Portero extends Deportista {
     private int atajada; // Atributo exclusivo
 
     public Portero(String nombre, String pais, int velocidad, int disparo, int pase, int defensa, double precio, int atajada) {

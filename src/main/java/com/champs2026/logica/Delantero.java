@@ -1,7 +1,7 @@
 // Delantero.java
 package com.champs2026.logica;
 
-public class Delantero extends com.champs2026.logica.Deportista {
+public class Delantero extends Deportista {
     public Delantero(String nombre, String pais, int velocidad, int disparo, int pase, int defensa, double precio) {
         super(nombre, pais, velocidad, disparo, pase, defensa, precio);
     }

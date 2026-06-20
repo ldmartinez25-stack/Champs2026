@@ -93,7 +93,7 @@ public class PanelMercado extends JPanel {
         lblTurnoDT.setFont(VistaPrincipal.FUENTE_SUBTITULO);
         lblTurnoDT.setForeground(VistaPrincipal.COLOR_ACENTO);
 
-        lblTurnoPais = new JLabel("Dirigiendo a: " + jugadorActivo.getSeleccionElegida().getNombrePais());
+        lblTurnoPais = new JLabel("Dirigiendo a: " + jugadorActivo.getSeleccionNacional().getNombrePais());
         lblTurnoPais.setFont(VistaPrincipal.FUENTE_NORMAL);
         lblTurnoPais.setForeground(VistaPrincipal.COLOR_TEXTO);
 
@@ -109,7 +109,7 @@ public class PanelMercado extends JPanel {
         lblPresupuesto.setFont(new Font("Segoe UI", Font.BOLD, 18));
         lblPresupuesto.setForeground(VistaPrincipal.COLOR_EXITO);
 
-        lblCantPlantilla = new JLabel("Futbolistas fichados: " + jugadorActivo.getSeleccionElegida().getPlantilla().size(), JLabel.RIGHT);
+        lblCantPlantilla = new JLabel("Futbolistas fichados: " + jugadorActivo.getSeleccionNacional().getPlantilla().size(), JLabel.RIGHT);
         lblCantPlantilla.setFont(VistaPrincipal.FUENTE_NORMAL);
         lblCantPlantilla.setForeground(VistaPrincipal.COLOR_TEXTO_MUTED);
 
@@ -134,7 +134,7 @@ public class PanelMercado extends JPanel {
             new EmptyBorder(10, 10, 10, 10)
         ));
         
-        JLabel lblTitulo1 = new JLabel(jugador1.getNombre() + " (" + jugador1.getSeleccionElegida().getNombrePais() + ")");
+        JLabel lblTitulo1 = new JLabel(jugador1.getNombre() + " (" + jugador1.getSeleccionNacional().getNombrePais() + ")");
         lblTitulo1.setFont(VistaPrincipal.FUENTE_NEGRITA);
         lblTitulo1.setForeground(VistaPrincipal.COLOR_ACENTO);
         panelJ1.add(lblTitulo1, BorderLayout.NORTH);
@@ -161,7 +161,7 @@ public class PanelMercado extends JPanel {
             new EmptyBorder(10, 10, 10, 10)
         ));
 
-        JLabel lblTitulo2 = new JLabel(jugador2.getNombre() + " (" + jugador2.getSeleccionElegida().getNombrePais() + ")");
+        JLabel lblTitulo2 = new JLabel(jugador2.getNombre() + " (" + jugador2.getSeleccionNacional().getNombrePais() + ")");
         lblTitulo2.setFont(VistaPrincipal.FUENTE_NEGRITA);
         lblTitulo2.setForeground(VistaPrincipal.COLOR_EXITO);
         panelJ2.add(lblTitulo2, BorderLayout.NORTH);
@@ -243,9 +243,9 @@ public class PanelMercado extends JPanel {
     private void actualizarInterfaz() {
         // 1. Actualizar textos de cabecera
         lblTurnoDT.setText("TURNO DE FICHAJE DE: " + jugadorActivo.getNombre().toUpperCase());
-        lblTurnoPais.setText("Dirigiendo a: " + jugadorActivo.getSeleccionElegida().getNombrePais());
+        lblTurnoPais.setText("Dirigiendo a: " + jugadorActivo.getSeleccionNacional().getNombrePais());
         lblPresupuesto.setText("Presupuesto: " + jugadorActivo.getPresupuesto() + " monedas");
-        lblCantPlantilla.setText("Futbolistas fichados: " + jugadorActivo.getSeleccionElegida().getPlantilla().size());
+        lblCantPlantilla.setText("Futbolistas fichados: " + jugadorActivo.getSeleccionNacional().getPlantilla().size());
 
         // Cambiar color del título según el jugador activo para retroalimentación visual
         if (jugadorActivo == jugador1) {
@@ -257,8 +257,8 @@ public class PanelMercado extends JPanel {
         // 2. Actualizar plantillas laterales
         rellenarPlantillaVisual(panelPlantilla1, jugador1);
         rellenarPlantillaVisual(panelPlantilla2, jugador2);
-        lblTotalPlantilla1.setText("Fichajes: " + jugador1.getSeleccionElegida().getPlantilla().size() + " | Monedas: " + jugador1.getPresupuesto());
-        lblTotalPlantilla2.setText("Fichajes: " + jugador2.getSeleccionElegida().getPlantilla().size() + " | Monedas: " + jugador2.getPresupuesto());
+        lblTotalPlantilla1.setText("Fichajes: " + jugador1.getSeleccionNacional().getPlantilla().size() + " | Monedas: " + jugador1.getPresupuesto());
+        lblTotalPlantilla2.setText("Fichajes: " + jugador2.getSeleccionNacional().getPlantilla().size() + " | Monedas: " + jugador2.getPresupuesto());
 
         // 3. Volver a pintar las tarjetas del mercado
         panelCartasContenedor.removeAll();
@@ -292,7 +292,7 @@ public class PanelMercado extends JPanel {
 
     private void rellenarPlantillaVisual(JPanel panel, Jugador jugador) {
         panel.removeAll();
-        for (Deportista d : jugador.getSeleccionElegida().getPlantilla()) {
+        for (Deportista d : jugador.getSeleccionNacional().getPlantilla()) {
             JPanel fila = new JPanel(new BorderLayout());
             fila.setBackground(VistaPrincipal.COLOR_TARJETA);
             fila.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -404,7 +404,7 @@ public class PanelMercado extends JPanel {
         btnFichar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // Cambiar apariencia si no pertenece a la selección del jugador activo
-        boolean esDeSuPais = jugadorActivo.getSeleccionElegida().getNombrePais().equalsIgnoreCase(d.getPais());
+        boolean esDeSuPais = jugadorActivo.getSeleccionNacional().getNombrePais().equalsIgnoreCase(d.getPais());
         
         if (!esDeSuPais) {
             btnFichar.setText("PAIS DIFERENTE");
@@ -462,10 +462,10 @@ public class PanelMercado extends JPanel {
 
     private void realizarFichaje(Deportista d) {
         // Validación: sólo se permite fichar de la selección del entrenador
-        if (!jugadorActivo.getSeleccionElegida().getNombrePais().equalsIgnoreCase(d.getPais())) {
+        if (!jugadorActivo.getSeleccionNacional().getNombrePais().equalsIgnoreCase(d.getPais())) {
             JOptionPane.showMessageDialog(
                 this,
-                "¡Fichaje denegado! " + jugadorActivo.getNombre() + " dirige a " + jugadorActivo.getSeleccionElegida().getNombrePais() +
+                "¡Fichaje denegado! " + jugadorActivo.getNombre() + " dirige a " + jugadorActivo.getSeleccionNacional().getNombrePais() +
                 " y solo puede fichar futbolistas de esa selección.\n" +
                 d.getNombre() + " pertenece a: " + d.getPais() + ".",
                 "Nacionalidad Incorrecta",

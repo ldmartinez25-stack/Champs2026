@@ -30,4 +30,57 @@ public class SeleccionNacional {
 
     public String getNombrePais() { return nombrePais; }
     public ArrayList<com.champs2026.logica.Deportista> getPlantilla() { return plantilla; }
+    
+    
+    /**
+     * Busca y retorna el primer Delantero de la plantilla.
+     */
+    public Deportista getDelantero() {
+        for (Deportista d : plantilla) {
+            if (d instanceof Delantero) {
+                return d;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Busca y retorna el primer Mediocampista de la plantilla.
+     */
+    public Deportista getMediocampista() {
+        for (Deportista d : plantilla) {
+            if (d instanceof Mediocampista) {
+                return d;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Busca y retorna el primer Defensa de la plantilla.
+     */
+    public Deportista getDefensa() {
+        for (Deportista d : plantilla) {
+            if (d instanceof Defensa) {
+                return d;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Busca y retorna el Portero de la plantilla.
+     */
+    public Deportista getPortero() {
+        for (Deportista d : plantilla) {
+            if (d instanceof Portero) {
+                return d;
+            }
+        }
+        return null;
+    }
+    
 }
+    
+    
+    
